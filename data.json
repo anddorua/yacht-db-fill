@@ -1,0 +1,472 @@
+{
+  "my_yacht.user": {
+    "amount": 5,
+    "key": "id",
+    "items": [
+      {
+        "id": null,
+        "firstname": "Andrew",
+        "lastname": "test",
+        "email": "orion@new.com",
+        "mobile": "123456789",
+        "password": "1q2w3e4r",
+        "role": "manager",
+        "discount": null
+      },
+      {
+        "id": null,
+        "firstname": "Terrence",
+        "lastname": "Schmeler",
+        "email": "Jaleel.Reinger86@gmail.com",
+        "mobile": "035-091-4735 x05",
+        "password": "password",
+        "role": "user_role",
+        "discount": 0.01
+      },
+      {
+        "id": null,
+        "firstname": "Vladimir",
+        "lastname": "Harris",
+        "email": "Raul.Doyle83@gmail.com",
+        "mobile": "1-356-492-7523 x",
+        "password": "password",
+        "role": "user_role",
+        "discount": 0.02
+      },
+      {
+        "id": null,
+        "firstname": "Ocie",
+        "lastname": "Leuschke",
+        "email": "Chadd.Ondricka13@yahoo.com",
+        "mobile": "715-135-2173 x50",
+        "password": "password",
+        "role": "user_role",
+        "discount": null
+      },
+      {
+        "id": null,
+        "firstname": "Fermin",
+        "lastname": "Murazik",
+        "email": "Sabina78@hotmail.com",
+        "mobile": "671-813-9035",
+        "password": "password",
+        "role": "user_role",
+        "discount": 0.07
+      }
+    ]
+  },
+  "my_yacht.devices": {
+    "amount": 10,
+    "key": "id",
+    "foreign": [
+      {
+        "fTable": "my_yacht.user",
+        "keys": {
+          "my": "user_id",
+          "foreign": "id"
+        }
+      }
+    ],
+    "items": [
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 5.3) Appl",
+        "device_id": "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.3) Appl",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 6.2) Appl"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.1) Appl",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.0) Appl"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 6.0) Appl"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (compatible; MSIE 10.0; Windows N",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 6.2) Appl"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.0) Appl",
+        "device_id": "Mozilla/5.0 (X11; Linux x86_64; rv:13.8) Geck"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Opera/11.43 (Windows NT 6.3; U; NE Presto/2.9",
+        "device_id": "Mozilla/5.0 (Windows NT 6.0; WOW64; rv:7.8) G"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Windows NT 6.1; Trident/7.0; Tou",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.2) Appl"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_5_5",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 6.0) Appl"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 6.3) Appl"
+      }
+    ]
+  },
+  "my_yacht.yacht": {
+    "amount": 1000,
+    "key": "id",
+    "items": [
+      {
+        "id": 1,
+        "title": "LOTUS 220",
+        "content": "Festus planeta sapienter promissios nuclear vexatum iacere est. liberi, rumor, et lamia",
+        "readmore": "Dura studeres, tanquam dexter orexis. brabeutas studere in varius rugensis civitas! burguss observare, tanquam lotus abactor. velum mechanice ducunt ad barbatus diatria. cottas manducare, tanquam gratis hilotae. cum coordinatae volare, omnes voxes acquirere azureus, audax ollaes. "
+      },
+      {
+        "id": 2,
+        "title": "DESERT ROSE 155",
+        "content": "Musas sunt terrors de fidelis spatii. Hibridas sunt humani generiss de talis adiurator. ",
+        "readmore": "Heu, castus navis! Regius, rusticus solitudos solite pugna de grandis, brevis nomen. Ubi est bi-color brabeuta? A falsis, boreas clemens cotta. Sunt repressores captis salvus, regius fluctuses. Cum buxum volare, omnes hippotoxotaes gratia placidus, gratis coordinataees."
+      },
+      {
+        "id": 3,
+        "title": "VIRGO 88",
+        "content": "Pol, a bene idoleum, fidelis olla! Sunt heureteses promissio bassus, mirabilis contencioes. ",
+        "readmore": "Hercle, solitudo emeritis!, rector! Planetas messis in tectum! Hercle, solem gratis!, alter demissio! Est domesticus fluctui, cesaris. Mineraliss volare in berolinum! Elevatuss nocere in copinga! Cum onus ire, omnes indictioes manifestum teres, nobilis fugaes."
+      },
+      {
+        "id": 4,
+        "title": "KHAN 90",
+        "content": "Sensorems ridetis, tanquam varius xiphias. Regius nutrix inciviliter tractares tata est. ",
+        "readmore": "Particulas potus, tanquam secundus pulchritudine. Nuptia, tumultumque, et hibrida. A falsis, hydra domesticus demissio. Caniss mori, tanquam fortis nuclear vexatum iacere. Est pius vigil, cesaris. Cum idoleum crescere, omnes apolloniateses carpseris placidus, bi-color rectores."
+      },
+      {
+        "id": 5,
+        "title": "PLUTO 75",
+        "content": "Scutum, torquis, et sensorem. Bi-color, festus tumultumques una aperto de albus, grandis axona. ",
+        "readmore": "Cum armarium peregrinatione, omnes nuclear vexatum iacerees locus brevis, pius gloses. Armariums assimilant in cubiculum! Buxum de azureus competition, promissio abnoba! Ubi est fortis axona? Mirabilis, fortis zirbuss solite convertam de superbus, altus plasmator."
+      }
+    ]
+  },
+  "my_yacht.file": {
+    "amount": 10,
+    "key": "id",
+    "foreign": [
+      {
+        "fTable": "my_yacht.yacht",
+        "keys": {
+          "my": "y_id",
+          "foreign": "id"
+        }
+      }
+    ],
+    "items": [
+      {
+        "id": null,
+        "type": "drawing",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "image",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "image",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "image",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "drawing",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "drawing",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "drawing",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "description",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "image",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "image",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      }
+    ]
+  },
+  "my_yacht.packages": {
+    "amount": 100,
+    "key": "id",
+    "foreign": [
+      {
+        "fTable": "my_yacht.yacht",
+        "keys": {
+          "my": "y_id",
+          "foreign": "id"
+        }
+      }
+    ],
+    "items": [
+      {
+        "title": "Charter LOTUS 220",
+        "price": 10000,
+        "description": "Charter LOTUS 220",
+        "min_charge": 4,
+        "unit": "Hours",
+        "y_id": 1,
+        "status": 1
+      },
+      {
+        "title": "Charter DESERT ROSE 155",
+        "price": 5000,
+        "description": "Charter DESERT ROSE 155",
+        "min_charge": 4,
+        "unit": "Hours",
+        "y_id": 2,
+        "status": 1
+      },
+      {
+        "title": "Charter VIRGO 88",
+        "price": 2000,
+        "description": "Charter VIRGO 88",
+        "min_charge": 4,
+        "unit": "Hours",
+        "y_id": 3,
+        "status": 1
+      },
+      {
+        "title": "Charter KHAN 90",
+        "price": 2000,
+        "description": "Charter KHAN 90",
+        "min_charge": 4,
+        "unit": "Hours",
+        "y_id": 4,
+        "status": 1
+      },
+      {
+        "title": "Charter PLUTO 75",
+        "price": 1250,
+        "description": "Charter PLUTO 75",
+        "min_charge": 4,
+        "unit": "Hours",
+        "y_id": 5,
+        "status": 1
+      },
+      {
+        "title": "Premium Package (Meal+Drinks)",
+        "price": 395,
+        "description": "5* Catered Premium Buffet + Live Station; Unlimited Premium Drinks for 4 Hours; Soft Drinks, Juices & Mixers; Bar Tender, Staff & Security; Security & Hostess; DJ, Music equip, Table Setting; 5* Hotel Staff",
+        "min_charge": 50,
+        "unit": "Guests",
+        "y_id": null,
+        "status": 1
+      },
+      {
+        "title": "Standard Package (Meal+Drinks)",
+        "price": 295,
+        "description": "5* Catered Standard Buffet + Live Station; Unlimited Standard Drinks for 4 Hours; Soft Drinks, Juices & Mixers; Bar Tender, Staff & Security; Security; Table Setting; 5* Hotel Staff",
+        "min_charge": 50,
+        "unit": "Guests",
+        "y_id": null,
+        "status": 1
+      },
+      {
+        "title": "Drinks Premium",
+        "price": 245,
+        "description": "Unlimited Premium Drinks for 4 Hours; Bar Tender, Staff & Security; Mixers, Juices & Soft Drinks; Packaged Snacks; Hostess, DJ & Music Equip",
+        "min_charge": 50,
+        "unit": "Guests",
+        "y_id": null,
+        "status": 1
+      },
+      {
+        "title": "Drinks Standard",
+        "price": 145,
+        "description": "Unlimited Standard Drinks for 4 Hours; Bar Tender, Staff & Security; Mixers, Juices & Soft Drinks",
+        "min_charge": 50,
+        "unit": "Guests",
+        "y_id": null,
+        "status": 1
+      },
+      {
+        "title": "Buffet Meal Premium",
+        "price": 245,
+        "description": "5* Catered Premium Buffet + Live Station & Soft Drinks; Table Setting; 5* Hotel Staff; Hostess; Music Equip",
+        "min_charge": 50,
+        "unit": "Guests",
+        "y_id": null,
+        "status": 1
+      },
+      {
+        "title": "Buffet Meal Standard",
+        "price": 145,
+        "description": "5* Catered Standard Buffet & Soft Drinks; Table Setting; 5* Hotel Staff",
+        "min_charge": 50,
+        "unit": "Guests",
+        "y_id": null,
+        "status": 1
+      },
+      {
+        "title": "Soft Drinks",
+        "price": 25,
+        "description": "Unlimited Soft Drinks, Juices, Water & Ice; 2 Waiters, 2 Cleaners",
+        "min_charge": 100,
+        "unit": "Guests",
+        "y_id": null,
+        "status": 1
+      },
+      {
+        "title": "Catering Corkage (Lotus&Desert Rose)",
+        "price": 50,
+        "description": "4 Helpers/Cleaners; 2Hrs Setup time + 1 Hour Cleaning time",
+        "min_charge": 100,
+        "unit": "Guests",
+        "y_id": null,
+        "status": 1
+      },
+      {
+        "title": "Drinks Corkage** (Lotus&Desert Rose)",
+        "price": 50,
+        "description": "Juices, Soft Drinks, Ice, Water, Mixers; 1 Bar Tender, 2 Waiters, 2 Cleaners, 2 Security, 1 Hostess; Bar Equipment; Music Equip, Disposable Glasses",
+        "min_charge": 100,
+        "unit": "Guests",
+        "y_id": null,
+        "status": 1
+      }
+    ]
+  },
+  "my_yacht.extras": {
+    "amount": 100,
+    "key": "id",
+    "items": [
+      {
+        "id": null,
+        "title": "Jet Boat",
+        "unit": "Per Trip / Hour",
+        "price": 500,
+        "terms": "Upto 7 People",
+        "status": true,
+        "min_charge": 1
+      },
+      {
+        "id": null,
+        "title": "Bar Man",
+        "unit": "Per Hour",
+        "price": 150,
+        "terms": "Professional Barman",
+        "status": true,
+        "min_charge": 4
+      },
+      {
+        "id": null,
+        "title": "Waiters / Staff",
+        "unit": "Per Hour",
+        "price": 75,
+        "terms": "Professional Waiters",
+        "status": true,
+        "min_charge": 4
+      },
+      {
+        "id": null,
+        "title": "Security/Bouncers",
+        "unit": "Per Hour",
+        "price": 100,
+        "terms": "VIP Background Security",
+        "status": true,
+        "min_charge": 4
+      },
+      {
+        "id": null,
+        "title": "Hostess",
+        "unit": "Per Hour",
+        "price": 150,
+        "terms": "Presentable & Professional",
+        "status": true,
+        "min_charge": 4
+      },
+      {
+        "id": null,
+        "title": "Photographer",
+        "unit": "Per Hour",
+        "price": 500,
+        "terms": "Standard Photographer",
+        "status": true,
+        "min_charge": 4
+      },
+      {
+        "id": null,
+        "title": "DJ",
+        "unit": "Per Hour",
+        "price": 500,
+        "terms": "House DJs, Excludes equipment",
+        "status": true,
+        "min_charge": 4
+      },
+      {
+        "id": null,
+        "title": "Professional Music equipment",
+        "unit": "Per Event",
+        "price": 100,
+        "terms": "CDJ(Pioneer R1), 4 Speaker+Sub, Mic",
+        "status": true,
+        "min_charge": 0
+      },
+      {
+        "id": null,
+        "title": "Theme/ Decorations",
+        "unit": "Per Event",
+        "price": 0,
+        "terms": "As Per Actual + 25% Surcharge",
+        "status": true,
+        "min_charge": 0
+      }
+    ]
+  }
+}

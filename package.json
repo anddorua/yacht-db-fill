@@ -1,0 +1,32 @@
+{
+  "name": "ydf",
+  "version": "1.0.0",
+  "description": "Yacht database initial fill",
+  "main": "dbtest.js",
+  "dependencies": {
+    "faker": "^3.1.0",
+    "fs": "0.0.1-security",
+    "minimist": "^1.2.0",
+    "pg": "^6.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anddorua/yacht-db-fill.git"
+  },
+  "keywords": [
+    "megayachts",
+    "yacht",
+    "database",
+    "fill"
+  ],
+  "author": "Andriy Doroshenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anddorua/yacht-db-fill/issues"
+  },
+  "homepage": "https://github.com/anddorua/yacht-db-fill#readme"
+}

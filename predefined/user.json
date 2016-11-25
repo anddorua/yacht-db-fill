@@ -1,0 +1,12 @@
+[
+  {
+    "id": null,
+    "firstname": "Andrew",
+    "lastname": "test",
+    "email": "orion@new.com",
+    "mobile": "123456789",
+    "password": "1q2w3e4r",
+    "role": "manager",
+    "discount": null
+  }
+]

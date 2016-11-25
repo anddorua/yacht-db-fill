@@ -6,22 +6,36 @@
 const faker = require("faker");
 const pg = require('pg');
 const fs = require('fs');
+const argv = require('minimist')(process.argv);
 
-var pgUser = "postgres";
-var pgPassword = "1q2w3e4r";
-var pgHost = "localhost";
-var pgDatabase = "postgres";
+if (Object.keys(argv).length == 1) {
+    console.log("Usage: node " + argv._[0] + " [-clear] [-v] [-d] [-s <filename_to_save>] | [-f <filename_to_load>] ]");
+    console.log("    where:");
+    console.log("    -f <filename_to_load> - load json data from file, do not generate it (note: use ./ prefix for local files)");
+    console.log("    -s <filename_to_save> - save generated data to file");
+    console.log("    -d - put data to database");
+    console.log("    -v - verbose mode, print data and actions");
+    console.log("    -clear - clear tables before filling");
+    console.log("    It uses standard environment postgres variables to access to database: PGUSER, PGPASSWORD, PGHOST, PGDATABASE");
+    return 0;
+}
+
+
+var pgUser = process.env.PGUSER || "postgres";
+var pgPassword = process.env.PGPASSWORD || "1q2w3e4r";
+var pgHost = process.env.PGHOST || "localhost";
+var pgDatabase = process.env.PGDATABASE || "postgres";
 
 const conString = "postgres://" + pgUser + ":" + pgPassword + "@" + pgHost + "/" + pgDatabase;
 var entities = {
-    "my_yacht.user": { "amount": 2, "generator": genUser, "key": "id" },
-    "my_yacht.devices": { "amount": 2, "generator": genDevices, "key": "id", "foreign": [ { fTable: "my_yacht.user", keys: { my: "user_id", foreign: "id" } } ] },
+    "my_yacht.user": { "amount": 5, "generator": genUser, "key": "id" },
+    "my_yacht.devices": { "amount": 10, "generator": genDevices, "key": "id", "foreign": [ { fTable: "my_yacht.user", keys: { my: "user_id", foreign: "id" } } ] },
     "my_yacht.yacht": { "amount": 1000, "generator": genYacht, "key": "id" },
-    "my_yacht.booking": { "amount": 10, "generator": genBooking, "key": "id", "foreign": [ { fTable: "my_yacht.user", keys: { my: "user_id", foreign: "id" } }, { fTable: "my_yacht.yacht", keys: { my: "y_id", foreign: "id" } } ]  },
+    /* "my_yacht.booking": { "amount": 10, "generator": genBooking, "key": "id", "foreign": [ { fTable: "my_yacht.user", keys: { my: "user_id", foreign: "id" } }, { fTable: "my_yacht.yacht", keys: { my: "y_id", foreign: "id" } } ]  }, */
     "my_yacht.file": { "amount": 10, "generator": genFile, "key": "id", "foreign": [ { fTable: "my_yacht.yacht", keys: { my: "y_id", foreign: "id" } } ]  },
-    "my_yacht.packages": { "amount": 100, "generator": genPackages, "key": "id", "foreign": [ { fTable: "my_yacht.yacht", keys: { my: "y_id", foreign: "id" } } ]  }
+    "my_yacht.packages": { "amount": 100, "generator": genPackages, "key": "id", "foreign": [ { fTable: "my_yacht.yacht", keys: { my: "y_id", foreign: "id" } } ]  },
+    "my_yacht.extras": { "amount": 100, "generator": genExtras, "key": "id"  }
 };
-
 
 Date.prototype.addDays = function(days)
 {
@@ -39,25 +53,55 @@ pg.connect(conString, function (err, client, done) {
     if (err) {
         return console.error('error fetching client from pool', err)
     }
-    generateEntities();
-    saveEntities(client);
-    saveChain.then(function(res){
-        console.log("================ all saved =================");
-        printEntities();
-    }, function(err){
-        console.log("Error occured");
-    })
-        .then(function (res) {
-            done();
-        }, function (err) {
-            done();
+    // load / generate data
+    if (argv.f) {
+        entities = require(argv.f)
+    } else {
+        generateEntities();
+    }
+    // save to file if required
+    if (argv.s) {
+        fs.writeFile(argv.s, JSON.stringify(entities), function(err){
+            if (err) {
+                console.error("Error to write file " + argv.s + ": ", err);
+            } else {
+                console.log("Data written to " + argv.s);
+            }
         });
+    }
+    // save data to database
+    if (argv.d) {
+        if (argv.clear) {
+            saveChain = clearDatabase(saveChain, client);
+        }
+        saveEntities(client);
+        saveChain.then(function(res){
+            if (argv.v) {
+                console.log("================ all saved =================");
+                printEntities();
+            }
+        }, function(err){
+            console.error("Error occured while database filling", err);
+        })
+            .then(function (res) {
+                done();
+            }, function (err) {
+                done();
+            });
+    } else {
+        console.log("Skip filling database");
+    }
 });
 
+console.log("All done.");
 return 0;
 
 function* genUser(amount) {
-    for (let i = 0; i < amount; i++) {
+    var src = require('./predefined/user.json');
+    for (let i = 0; i < amount && i < src.length; i++) {
+        yield src[i];
+    }
+    for (let i = 0; i < (amount - src.length); i++) {
         yield {
             id: null,
             firstname: faker.name.firstName().substr(0, 80),
@@ -65,7 +109,7 @@ function* genUser(amount) {
             email: faker.internet.email().substr(0, 255),
             mobile: faker.phone.phoneNumber().substr(0, 16),
             password: "password",
-            role: faker.random.arrayElement(["manager", "user_role"]),
+            role: faker.random.arrayElement(["user_role"]),
             discount: faker.random.arrayElement([faker.random.number({ min: 0, max: 0.1, precision: 0.01 }), null])
         };
     }
@@ -83,7 +127,7 @@ function* genDevices(amount) {
 }
 
 function* genYacht(amount) {
-    var src = require('./yacht.json');
+    var src = require('./predefined/yacht.json');
     for (let i = 0; i < amount && i < src.length; i++) {
         yield src[i];
     }
@@ -91,7 +135,15 @@ function* genYacht(amount) {
 }
 
 function* genPackages(amount) {
-    var src = require('./packages.json');
+    var src = require('./predefined/packages.json');
+    for (let i = 0; i < amount && i < src.length; i++) {
+        yield src[i];
+    }
+    return null;
+}
+
+function* genExtras(amount) {
+    var src = require('./predefined/extras.json');
     for (let i = 0; i < amount && i < src.length; i++) {
         yield src[i];
     }
@@ -104,7 +156,6 @@ function* genBooking(amount) {
         var startDate = new Date(now.getTime() - Math.floor(Math.random() * 100) *86400 * 1000);
         var endDate = new Date(startDate.getTime() + Math.floor(Math.random() * 200) *86400 * 1000);
         endDate.addDays( Math.floor(Math.random() * 200));
-        console.log("Dates generated: ", startDate, endDate);
         yield {
             id: null,
             y_id: null,
@@ -124,7 +175,6 @@ function* genInvoice(amount) {
         var startDate = new Date(now.getTime() - Math.floor(Math.random() * 100) *86400 * 1000);
         var endDate = new Date(startDate.getTime() + Math.floor(Math.random() * 200) *86400 * 1000);
         endDate.addDays( Math.floor(Math.random() * 200));
-        console.log("Dates generated: ", startDate, endDate);
         yield {
             id: null,
             y_id: null,
@@ -163,7 +213,9 @@ function generateEntities() {
 function printEntities() {
     for (let entityItem in entities) {
         entities[entityItem].items.forEach(function (eItem) {
-            console.log(eItem);
+            if (argv.v) {
+                console.log("Entity item: ", eItem);
+            }
         });
     }
 }
@@ -171,11 +223,15 @@ function printEntities() {
 // entities save and binding
 function saveEntities(pgClient) {
     for (let entity in entities) {
-        console.log("Going to save " + entity);
+        if (argv.v) {
+            console.log("Going to save " + entity);
+        }
         if (!saveEntity(entity, pgClient)) {
             console.error("Entity " + fKey.fTable + ": closure occured.");
         } else {
-            console.log(entity + " chained");
+            if (argv.v) {
+                console.log(entity + " chained");
+            }
         }
     }
 }
@@ -222,7 +278,9 @@ function saveEntity(entity, pgClient) {
             }
         })
     }
-    console.log("Make Chain to save entity " + entity);
+    if (argv.v) {
+        console.log("Make Chain to save entity " + entity);
+    }
     saveChain = saveChain.then(function(res){
         return Promise.all(saveItems(entity, pgClient));
     }, function(err){
@@ -249,16 +307,18 @@ function saveItems(entity, pgClient) {
         //save item
         promises.push( (function (_entity, _eItem) {
             let savePromise = new Promise(function(resolve, reject){
-                    let query = constructInsertQuery(_entity, _eItem);
+                let query = constructInsertQuery(_entity, _eItem);
+                if (argv.v) {
                     console.log("SQL:", query["state"]);
                     console.log("PARAMS:", query["params"]);
-                    pgClient.query(query["state"], query["params"], function (err, result) {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve(result.rows[0][entities[_entity].key]);
-                        }
-                    });
+                }
+                pgClient.query(query["state"], query["params"], function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result.rows[0][entities[_entity].key]);
+                    }
+                });
             });
             savePromise.then(function(key){
                 let oldKey = _eItem[entities[_entity].key];
@@ -266,7 +326,9 @@ function saveItems(entity, pgClient) {
                     fixForeignKeys(_entity, oldKey, key);
                 }
                 _eItem[entities[_entity].key] = key;
-                console.log("Entity " + _entity + " saved:", _eItem);
+                if (argv.v) {
+                    console.log("Entity " + _entity + " saved:", _eItem);
+                }
             }, function(err){
                 console.error('error happened during query ', err);
             });
@@ -293,7 +355,48 @@ function constructInsertQuery(entity, item) {
 }
 
 function fakeQuery(state, params, callback) {
-    console.log("sql state:", state);
-    console.log("sql params: ", params);
+    if (argv.v) {
+        console.log("sql state:", state);
+        console.log("sql params: ", params);
+    }
     callback(false, { rows: [ ++genNumbersCurrent ] });
+}
+
+function clearDatabase(chain, pgClient) {
+    var queries = [
+        "delete from my_yacht.download",
+        "delete from my_yacht.payment",
+        "delete from my_yacht.invoice",
+        "delete from my_yacht.booking",
+        "delete from my_yacht.additional",
+        "delete from my_yacht.file",
+        "delete from my_yacht.packages",
+        "delete from my_yacht.extras",
+        "delete from my_yacht.devices",
+        "delete from my_yacht.user",
+        "delete from my_yacht.yacht",
+    ];
+    queries.forEach(function(query) {
+        chain = chain.then(function(res){
+            return new Promise(function (resolve, reject) {
+                if (argv.v) {
+                    console.log("chain query :", query);
+                }
+                pgClient.query(query, [], function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        if (argv.v) {
+                            console.log("sql state:", query);
+                        }
+                        resolve(true);
+                    }
+                });
+            })
+        }, function (err) {
+            console.error("Error during database clear:", err);
+            return err;
+        })
+    });
+    return chain;
 }
