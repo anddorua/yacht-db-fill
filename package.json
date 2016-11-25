@@ -28,5 +28,6 @@
   "bugs": {
     "url": "https://github.com/anddorua/yacht-db-fill/issues"
   },
-  "homepage": "https://github.com/anddorua/yacht-db-fill#readme"
+  "homepage": "https://github.com/anddorua/yacht-db-fill#readme",
+  "start": "node dbtest.js"
 }

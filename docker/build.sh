@@ -1,0 +1,1 @@
+docker build -t mapleukraine/yachtdbfill:1.0 .
