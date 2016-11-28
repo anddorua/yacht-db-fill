@@ -44,7 +44,6 @@ Date.prototype.addDays = function(days)
     return dat;
 };
 
-
 var genNumbersCurrent = 0;
 
 var saveChain = Promise.resolve(true);
@@ -72,7 +71,14 @@ pg.connect(conString, function (err, client, done) {
     // save data to database
     if (argv.d) {
         if (argv.clear) {
+            if (argv.v) {
+                console.log("Going to clear tables before fill.");
+            }
             saveChain = clearDatabase(saveChain, client);
+        } else {
+            if (argv.v) {
+                console.log("Database not cleared.");
+            }
         }
         saveEntities(client);
         saveChain.then(function(res){
