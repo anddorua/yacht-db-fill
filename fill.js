@@ -15,7 +15,7 @@ if (Object.keys(argv).length == 1) {
     console.log("    -s <filename_to_save> - save generated data to file");
     console.log("    -d - put data to database");
     console.log("    -v - verbose mode, print data and actions");
-    console.log("    -clear - clear tables before filling");
+    console.log("    --clear - clear tables before filling");
     console.log("    It uses standard environment postgres variables to access to database: PGUSER, PGPASSWORD, PGHOST, PGDATABASE");
     return 0;
 }
@@ -355,7 +355,13 @@ function constructInsertQuery(entity, item) {
     result["state"] = "INSERT INTO " + entity + " (" + fields.join(",") + ") VALUES (" + paramList.join(",") + ") RETURNING " + entities[entity].key;
     result["params"] = [];
     fields.forEach(function (field) {
-        result["params"].push(item[field]);
+        var itemValue;
+        if (Array.isArray(item[field])) {
+            itemValue = item[field].join();
+        } else {
+            itemValue = item[field];
+        }
+        result["params"].push(itemValue);
     });
     return result;
 }
