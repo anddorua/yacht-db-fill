@@ -4,7 +4,7 @@
       "price": 10000,
       "description": "Charter LOTUS 220",
       "min_charge": 4,
-      "unit": "Hours",
+      "unit": "Per hour",
       "y_id": 1,
       "status": 1
     },
@@ -13,7 +13,7 @@
       "price": 5000,
       "description": "Charter DESERT ROSE 155",
       "min_charge": 4,
-      "unit": "Hours",
+      "unit": "Per hour",
       "y_id": 2,
       "status": 1
     },
@@ -22,7 +22,7 @@
       "price": 2000,
       "description": "Charter VIRGO 88",
       "min_charge": 4,
-      "unit": "Hours",
+      "unit": "Per hour",
       "y_id": 3,
       "status": 1
     },
@@ -31,7 +31,7 @@
       "price": 2000,
       "description": "Charter KHAN 90",
       "min_charge": 4,
-      "unit": "Hours",
+      "unit": "Per hour",
       "y_id": 4,
       "status": 1
     },
@@ -40,7 +40,7 @@
       "price": 1250,
       "description": "Charter PLUTO 75",
       "min_charge": 4,
-      "unit": "Hours",
+      "unit": "Per hour",
       "y_id": 5,
       "status": 1
     },
@@ -51,7 +51,7 @@
       "price": 395,
       "description": "5* Catered Premium Buffet + Live Station; Unlimited Premium Drinks for 4 Hours; Soft Drinks, Juices & Mixers; Bar Tender, Staff & Security; Security & Hostess; DJ, Music equip, Table Setting; 5* Hotel Staff",
       "min_charge": 50,
-      "unit": "Guests",
+      "unit": "Per guest",
       "y_id": null,
       "status": 1
     },
@@ -60,7 +60,7 @@
       "price": 295,
       "description": "5* Catered Standard Buffet + Live Station; Unlimited Standard Drinks for 4 Hours; Soft Drinks, Juices & Mixers; Bar Tender, Staff & Security; Security; Table Setting; 5* Hotel Staff",
       "min_charge": 50,
-      "unit": "Guests",
+      "unit": "Per guest",
       "y_id": null,
       "status": 1
     },
@@ -69,7 +69,7 @@
       "price": 245,
       "description": "Unlimited Premium Drinks for 4 Hours; Bar Tender, Staff & Security; Mixers, Juices & Soft Drinks; Packaged Snacks; Hostess, DJ & Music Equip",
       "min_charge": 50,
-      "unit": "Guests",
+      "unit": "Per guest",
       "y_id": null,
       "status": 1
     },
@@ -78,7 +78,7 @@
       "price": 145,
       "description": "Unlimited Standard Drinks for 4 Hours; Bar Tender, Staff & Security; Mixers, Juices & Soft Drinks",
       "min_charge": 50,
-      "unit": "Guests",
+      "unit": "Per guest",
       "y_id": null,
       "status": 1
     },
@@ -87,7 +87,7 @@
       "price": 245,
       "description": "5* Catered Premium Buffet + Live Station & Soft Drinks; Table Setting; 5* Hotel Staff; Hostess; Music Equip",
       "min_charge": 50,
-      "unit": "Guests",
+      "unit": "Per guest",
       "y_id": null,
       "status": 1
     },
@@ -96,7 +96,7 @@
       "price": 145,
       "description": "5* Catered Standard Buffet & Soft Drinks; Table Setting; 5* Hotel Staff",
       "min_charge": 50,
-      "unit": "Guests",
+      "unit": "Per guest",
       "y_id": null,
       "status": 1
     },
@@ -105,7 +105,7 @@
       "price": 25,
       "description": "Unlimited Soft Drinks, Juices, Water & Ice; 2 Waiters, 2 Cleaners",
       "min_charge": 100,
-      "unit": "Guests",
+      "unit": "Per guest",
       "y_id": null,
       "status": 1
     },
@@ -114,7 +114,7 @@
       "price":50,
       "description": "4 Helpers/Cleaners; 2Hrs Setup time + 1 Hour Cleaning time",
       "min_charge": 100,
-      "unit": "Guests",
+      "unit": "Per guest",
       "y_id": null,
       "status": 1
     },
@@ -123,7 +123,7 @@
       "price":50,
       "description": "Juices, Soft Drinks, Ice, Water, Mixers; 1 Bar Tender, 2 Waiters, 2 Cleaners, 2 Security, 1 Hostess; Bar Equipment; Music Equip, Disposable Glasses",
       "min_charge": 100,
-      "unit": "Guests",
+      "unit": "Per guest",
       "y_id": null,
       "status": 1
     }

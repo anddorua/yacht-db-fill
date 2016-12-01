@@ -11,7 +11,7 @@
     {
       "id": null,
       "title":"Bar Man",
-      "unit":"Per Hour",
+      "unit":"Per hour",
       "price":150,
       "terms":"Professional Barman",
       "status": true,
@@ -20,7 +20,7 @@
     {
       "id": null,
       "title":"Waiters / Staff",
-      "unit":"Per Hour",
+      "unit":"Per hour",
       "price":75,
       "terms":"Professional Waiters",
       "status": true,
@@ -29,7 +29,7 @@
     {
       "id": null,
       "title":"Security/Bouncers",
-      "unit":"Per Hour",
+      "unit":"Per hour",
       "price":100,
       "terms":"VIP Background Security",
       "status": true,
@@ -38,7 +38,7 @@
     {
       "id": null,
       "title":"Hostess",
-      "unit":"Per Hour",
+      "unit":"Per hour",
       "price":150,
       "terms":"Presentable & Professional",
       "status": true,
@@ -47,7 +47,7 @@
     {
       "id": null,
       "title":"Photographer",
-      "unit":"Per Hour",
+      "unit":"Per hour",
       "price":500,
       "terms":"Standard Photographer",
       "status": true,
@@ -56,7 +56,7 @@
     {
       "id": null,
       "title":"DJ",
-      "unit":"Per Hour",
+      "unit":"Per hour",
       "price":500,
       "terms":"House DJs, Excludes equipment",
       "status": true,
@@ -65,7 +65,7 @@
     {
       "id": null,
       "title":"Professional Music equipment",
-      "unit":"Per Event",
+      "unit":"Per event",
       "price":100,
       "terms":"CDJ(Pioneer R1), 4 Speaker+Sub, Mic",
       "status": true,
@@ -74,7 +74,7 @@
     {
       "id": null,
       "title":"Theme/ Decorations",
-      "unit":"Per Event",
+      "unit":"Per event",
       "price":0,
       "terms":"As Per Actual + 25% Surcharge",
       "status": true,

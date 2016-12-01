@@ -15,43 +15,43 @@
       },
       {
         "id": null,
-        "firstname": "Juliana",
-        "lastname": "Brekke",
-        "email": "Jameson10@hotmail.com",
-        "mobile": "029.879.9427",
+        "firstname": "Giovanny",
+        "lastname": "Roob",
+        "email": "Fabian_Gutmann@hotmail.com",
+        "mobile": "899.313.0418 x10",
         "password": "password",
         "role": "user_role",
         "discount": null
       },
       {
         "id": null,
-        "firstname": "Agustina",
-        "lastname": "McLaughlin",
-        "email": "Alvena25@yahoo.com",
-        "mobile": "934-794-8025",
+        "firstname": "Jennie",
+        "lastname": "O'Reilly",
+        "email": "Carlotta_Wilkinson64@gmail.com",
+        "mobile": "1-939-254-3950 x",
         "password": "password",
         "role": "user_role",
         "discount": null
       },
       {
         "id": null,
-        "firstname": "Don",
-        "lastname": "Weissnat",
-        "email": "Libby_Treutel73@gmail.com",
-        "mobile": "586.698.2774 x73",
+        "firstname": "Heidi",
+        "lastname": "Cummerata",
+        "email": "Arne.Brekke@yahoo.com",
+        "mobile": "1-004-652-2976 x",
         "password": "password",
         "role": "user_role",
         "discount": null
       },
       {
         "id": null,
-        "firstname": "Lurline",
-        "lastname": "Schinner",
-        "email": "Furman_Gutkowski@hotmail.com",
-        "mobile": "(797) 900-4459 x",
+        "firstname": "Everardo",
+        "lastname": "Pagac",
+        "email": "Beth_Heidenreich23@hotmail.com",
+        "mobile": "1-974-957-1539",
         "password": "password",
         "role": "user_role",
-        "discount": 0.03
+        "discount": null
       }
     ]
   },
@@ -71,62 +71,62 @@
       {
         "id": null,
         "user_id": null,
-        "platform": "Opera/13.98 (Windows NT 5.3; U; AN Presto/2.9",
-        "device_id": "Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:7"
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.0) Appl",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 6.2) Appl"
       },
       {
         "id": null,
         "user_id": null,
-        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.3) Appl",
-        "device_id": "Mozilla/5.0 (Windows NT 6.2; Trident/7.0; rv:"
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.0) Appl",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.1) Appl"
       },
       {
         "id": null,
         "user_id": null,
-        "platform": "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT",
-        "device_id": "Mozilla/5.0 (compatible; MSIE 10.0; Windows N"
+        "platform": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_6",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.1) Appl"
       },
       {
         "id": null,
         "user_id": null,
-        "platform": "Mozilla/5.0 (X11; Linux x86_64 AppleWebKit/53",
-        "device_id": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT"
-      },
-      {
-        "id": null,
-        "user_id": null,
-        "platform": "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT",
-        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.3) Appl"
-      },
-      {
-        "id": null,
-        "user_id": null,
-        "platform": "Mozilla/5.0 (Windows NT 6.0; WOW64; rv:6.4) G",
-        "device_id": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT"
-      },
-      {
-        "id": null,
-        "user_id": null,
-        "platform": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10.",
-        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 6.1) Appl"
-      },
-      {
-        "id": null,
-        "user_id": null,
-        "platform": "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:6",
+        "platform": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT",
         "device_id": "Mozilla/5.0 (compatible; MSIE 10.0; Windows N"
       },
       {
         "id": null,
         "user_id": null,
         "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.1) Appl",
+        "device_id": "Mozilla/5.0 (Windows NT 5.3; Win64; x64; rv:8"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 5.2) Appl",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.2) Appl"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT",
         "device_id": "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_"
       },
       {
         "id": null,
         "user_id": null,
-        "platform": "Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:",
-        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 6.1) Appl"
+        "platform": "Mozilla/5.0 (X11; Linux i686 AppleWebKit/538.",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.0) Appl"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 5.3) Appl",
+        "device_id": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT"
+      },
+      {
+        "id": null,
+        "user_id": null,
+        "platform": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6.3",
+        "device_id": "Opera/9.71 (Windows NT 5.1; U; JA Presto/2.9."
       }
     ]
   },
@@ -154,7 +154,7 @@
           "For parties accommodates up to 1000+ People including 400 Table settings. Multiple Bars\r\n",
           "Steel Double Hull and Double Bottom. 150,000 Liters of Water & Fuel Capacity\r\n",
           "4 Diesel Engines – 400 HP x 4; 3 Diesel Generators - 2 X 192 Kw + 1 x 50 Kw, 4 X 72 KW Thrusters. Rudder Joy stick steering system\r\n"
-          ]
+        ]
       },
       {
         "id": 2,
@@ -230,25 +230,13 @@
     "items": [
       {
         "id": null,
-        "type": "description",
-        "url": "http://lorempixel.com/640/480/transport",
-        "y_id": null
-      },
-      {
-        "id": null,
         "type": "drawing",
         "url": "http://lorempixel.com/640/480/transport",
         "y_id": null
       },
       {
         "id": null,
-        "type": "drawing",
-        "url": "http://lorempixel.com/640/480/transport",
-        "y_id": null
-      },
-      {
-        "id": null,
-        "type": "drawing",
+        "type": "image",
         "url": "http://lorempixel.com/640/480/transport",
         "y_id": null
       },
@@ -272,7 +260,13 @@
       },
       {
         "id": null,
-        "type": "image",
+        "type": "drawing",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "description",
         "url": "http://lorempixel.com/640/480/transport",
         "y_id": null
       },
@@ -285,6 +279,12 @@
       {
         "id": null,
         "type": "image",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": null
+      },
+      {
+        "id": null,
+        "type": "description",
         "url": "http://lorempixel.com/640/480/transport",
         "y_id": null
       }
@@ -308,7 +308,7 @@
         "price": 10000,
         "description": "Charter LOTUS 220",
         "min_charge": 4,
-        "unit": "Hours",
+        "unit": "Per hour",
         "y_id": 1,
         "status": 1
       },
@@ -317,7 +317,7 @@
         "price": 5000,
         "description": "Charter DESERT ROSE 155",
         "min_charge": 4,
-        "unit": "Hours",
+        "unit": "Per hour",
         "y_id": 2,
         "status": 1
       },
@@ -326,7 +326,7 @@
         "price": 2000,
         "description": "Charter VIRGO 88",
         "min_charge": 4,
-        "unit": "Hours",
+        "unit": "Per hour",
         "y_id": 3,
         "status": 1
       },
@@ -335,7 +335,7 @@
         "price": 2000,
         "description": "Charter KHAN 90",
         "min_charge": 4,
-        "unit": "Hours",
+        "unit": "Per hour",
         "y_id": 4,
         "status": 1
       },
@@ -344,7 +344,7 @@
         "price": 1250,
         "description": "Charter PLUTO 75",
         "min_charge": 4,
-        "unit": "Hours",
+        "unit": "Per hour",
         "y_id": 5,
         "status": 1
       },
@@ -353,7 +353,7 @@
         "price": 395,
         "description": "5* Catered Premium Buffet + Live Station; Unlimited Premium Drinks for 4 Hours; Soft Drinks, Juices & Mixers; Bar Tender, Staff & Security; Security & Hostess; DJ, Music equip, Table Setting; 5* Hotel Staff",
         "min_charge": 50,
-        "unit": "Guests",
+        "unit": "Per guest",
         "y_id": null,
         "status": 1
       },
@@ -362,7 +362,7 @@
         "price": 295,
         "description": "5* Catered Standard Buffet + Live Station; Unlimited Standard Drinks for 4 Hours; Soft Drinks, Juices & Mixers; Bar Tender, Staff & Security; Security; Table Setting; 5* Hotel Staff",
         "min_charge": 50,
-        "unit": "Guests",
+        "unit": "Per guest",
         "y_id": null,
         "status": 1
       },
@@ -371,7 +371,7 @@
         "price": 245,
         "description": "Unlimited Premium Drinks for 4 Hours; Bar Tender, Staff & Security; Mixers, Juices & Soft Drinks; Packaged Snacks; Hostess, DJ & Music Equip",
         "min_charge": 50,
-        "unit": "Guests",
+        "unit": "Per guest",
         "y_id": null,
         "status": 1
       },
@@ -380,7 +380,7 @@
         "price": 145,
         "description": "Unlimited Standard Drinks for 4 Hours; Bar Tender, Staff & Security; Mixers, Juices & Soft Drinks",
         "min_charge": 50,
-        "unit": "Guests",
+        "unit": "Per guest",
         "y_id": null,
         "status": 1
       },
@@ -389,7 +389,7 @@
         "price": 245,
         "description": "5* Catered Premium Buffet + Live Station & Soft Drinks; Table Setting; 5* Hotel Staff; Hostess; Music Equip",
         "min_charge": 50,
-        "unit": "Guests",
+        "unit": "Per guest",
         "y_id": null,
         "status": 1
       },
@@ -398,7 +398,7 @@
         "price": 145,
         "description": "5* Catered Standard Buffet & Soft Drinks; Table Setting; 5* Hotel Staff",
         "min_charge": 50,
-        "unit": "Guests",
+        "unit": "Per guest",
         "y_id": null,
         "status": 1
       },
@@ -407,7 +407,7 @@
         "price": 25,
         "description": "Unlimited Soft Drinks, Juices, Water & Ice; 2 Waiters, 2 Cleaners",
         "min_charge": 100,
-        "unit": "Guests",
+        "unit": "Per guest",
         "y_id": null,
         "status": 1
       },
@@ -416,7 +416,7 @@
         "price": 50,
         "description": "4 Helpers/Cleaners; 2Hrs Setup time + 1 Hour Cleaning time",
         "min_charge": 100,
-        "unit": "Guests",
+        "unit": "Per guest",
         "y_id": null,
         "status": 1
       },
@@ -425,7 +425,7 @@
         "price": 50,
         "description": "Juices, Soft Drinks, Ice, Water, Mixers; 1 Bar Tender, 2 Waiters, 2 Cleaners, 2 Security, 1 Hostess; Bar Equipment; Music Equip, Disposable Glasses",
         "min_charge": 100,
-        "unit": "Guests",
+        "unit": "Per guest",
         "y_id": null,
         "status": 1
       }
@@ -447,7 +447,7 @@
       {
         "id": null,
         "title": "Bar Man",
-        "unit": "Per Hour",
+        "unit": "Per hour",
         "price": 150,
         "terms": "Professional Barman",
         "status": true,
@@ -456,7 +456,7 @@
       {
         "id": null,
         "title": "Waiters / Staff",
-        "unit": "Per Hour",
+        "unit": "Per hour",
         "price": 75,
         "terms": "Professional Waiters",
         "status": true,
@@ -465,7 +465,7 @@
       {
         "id": null,
         "title": "Security/Bouncers",
-        "unit": "Per Hour",
+        "unit": "Per hour",
         "price": 100,
         "terms": "VIP Background Security",
         "status": true,
@@ -474,7 +474,7 @@
       {
         "id": null,
         "title": "Hostess",
-        "unit": "Per Hour",
+        "unit": "Per hour",
         "price": 150,
         "terms": "Presentable & Professional",
         "status": true,
@@ -483,7 +483,7 @@
       {
         "id": null,
         "title": "Photographer",
-        "unit": "Per Hour",
+        "unit": "Per hour",
         "price": 500,
         "terms": "Standard Photographer",
         "status": true,
@@ -492,7 +492,7 @@
       {
         "id": null,
         "title": "DJ",
-        "unit": "Per Hour",
+        "unit": "Per hour",
         "price": 500,
         "terms": "House DJs, Excludes equipment",
         "status": true,
@@ -501,7 +501,7 @@
       {
         "id": null,
         "title": "Professional Music equipment",
-        "unit": "Per Event",
+        "unit": "Per event",
         "price": 100,
         "terms": "CDJ(Pioneer R1), 4 Speaker+Sub, Mic",
         "status": true,
@@ -510,7 +510,7 @@
       {
         "id": null,
         "title": "Theme/ Decorations",
-        "unit": "Per Event",
+        "unit": "Per event",
         "price": 0,
         "terms": "As Per Actual + 25% Surcharge",
         "status": true,
