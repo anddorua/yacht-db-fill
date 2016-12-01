@@ -357,7 +357,7 @@ function constructInsertQuery(entity, item) {
     fields.forEach(function (field) {
         var itemValue;
         if (Array.isArray(item[field])) {
-            itemValue = item[field].join();
+            itemValue = item[field].join('');
         } else {
             itemValue = item[field];
         }
