@@ -48,6 +48,12 @@ var genNumbersCurrent = 0;
 
 var saveChain = Promise.resolve(true);
 
+function conOut() {
+    if (argv.v) {
+        console.log(arguments);
+    }
+}
+
 pg.connect(conString, function (err, client, done) {
     if (err) {
         return console.error('error fetching client from pool', err)
@@ -71,21 +77,16 @@ pg.connect(conString, function (err, client, done) {
     // save data to database
     if (argv.d) {
         if (argv.clear) {
-            if (argv.v) {
-                console.log("Going to clear tables before fill.");
-            }
+            conOut("Going to clear tables before fill.");
             saveChain = clearDatabase(saveChain, client);
         } else {
             if (argv.v) {
-                console.log("Database not cleared.");
+                conOut("Database not cleared.");
             }
         }
-        saveEntities(client);
+        saveEntities(client, saveChain);
         saveChain.then(function(res){
-            if (argv.v) {
-                console.log("================ all saved =================");
-                printEntities();
-            }
+            conOut("================ all saved =================");
         }, function(err){
             console.error("Error occured while database filling", err);
         })
@@ -100,7 +101,7 @@ pg.connect(conString, function (err, client, done) {
 });
 
 console.log("All done.");
-return 0;
+//return 0;
 
 function* genUser(amount) {
     var src = require('./predefined/user.json');
@@ -109,7 +110,7 @@ function* genUser(amount) {
     }
     for (let i = 0; i < (amount - src.length); i++) {
         yield {
-            id: null,
+            id: faker.random.number({ min: 1000, max: 2000, precision: 1 }),
             firstname: faker.name.firstName().substr(0, 80),
             lastname: faker.name.lastName().substr(0, 80),
             email: faker.internet.email().substr(0, 255),
@@ -122,10 +123,11 @@ function* genUser(amount) {
 }
 
 function* genDevices(amount) {
+    let userIds = entities["my_yacht.user"].items.map(function(item){ return item.id; });
     for (let i = 0; i < amount; i++) {
         yield {
             id: null,
-            user_id: null,
+            user_id: faker.random.arrayElement(userIds),
             platform: faker.internet.userAgent().substr(0, 45),
             device_id: faker.internet.userAgent().substr(0, 45)
         };
@@ -194,12 +196,13 @@ function* genInvoice(amount) {
 }
 
 function* genFile(amount) {
+    let yIds = entities["my_yacht.yacht"].items.map(function(item){ return item.id; });
     for (let i = 0; i < amount; i++) {
         yield {
             id: null,
             type:  faker.random.arrayElement(["image", "drawing", "description"]),
             url: faker.image.transport(),
-            y_id: null
+            y_id: faker.random.arrayElement(yIds)
         };
     }
 }
@@ -227,17 +230,13 @@ function printEntities() {
 }
 
 // entities save and binding
-function saveEntities(pgClient) {
+function saveEntities(pgClient, chain) {
     for (let entity in entities) {
-        if (argv.v) {
-            console.log("Going to save " + entity);
-        }
-        if (!saveEntity(entity, pgClient)) {
+        conOut("Going to save " + entity);
+        if (!saveEntity(entity, pgClient, chain)) {
             console.error("Entity " + fKey.fTable + ": closure occured.");
         } else {
-            if (argv.v) {
-                console.log(entity + " chained");
-            }
+            conOut(entity + " chained");
         }
     }
 }
@@ -250,25 +249,33 @@ function saveEntities(pgClient) {
  */
 function fixForeignKeys(entityName, oldFk, newFk) {
     for (let eName in entities) {
+        conOut("Find fk in " + eName);
         var entityMeta = entities[eName];
         if (!entityMeta.foreign) {
-            return;
+            continue;
         }
         let fk = entityMeta.foreign.find(function (fkItem) {
             return fkItem.fTable == entityName;
         });
         if (!fk) {
-            return;
+            continue;
         }
+        conOut("Fix foreign key for entities " + eName, fk);
         entityMeta.items.forEach(function(item){
+            //define primary key if not present
+            if (Object.keys(item).indexOf(entityMeta.key) == -1) {
+                item[entityMeta.key] = null;
+            }
             if (item[fk.keys.my] === oldFk) {
+                conOut("Entity " + eName + " with pk=" + item[entityMeta.key] + " fk[" + fk.keys.my + "]=="
+                    + (item[fk.keys.my] === null ? 'null' : item[fk.keys.my]) + " => " + newFk);
                 item[fk.keys.my] = newFk;
             }
         });
     }
 }
 
-function saveEntity(entity, pgClient) {
+function saveEntity(entity, pgClient, chain) {
     if (entities[entity].done) {
         return true;
     }
@@ -278,7 +285,7 @@ function saveEntity(entity, pgClient) {
     entities[entity].inProgress = true;
     if (entities[entity].foreign) {
         entities[entity].foreign.forEach(function (fKey) {
-            if (!saveEntity(fKey.fTable)) {
+            if (!saveEntity(fKey.fTable, pgClient, chain)) {
                 console.error("Entity " + fKey.fTable + ": closure occured.");
                 return false;
             }
@@ -301,8 +308,11 @@ function saveEntity(entity, pgClient) {
 // saves items to table and stores primary keys
 function saveItems(entity, pgClient) {
     var promises = [];
+    //var itemsChain = Promise.resolve(true);
     entities[entity].items.forEach(function (eItem) {
         //collect foreign keys
+
+/*
         if (entities[entity].foreign) {
             entities[entity].foreign.forEach(function (fk) {
                 let forCount = entities[fk.fTable].items.length;
@@ -310,14 +320,13 @@ function saveItems(entity, pgClient) {
                 eItem[fk.keys.my] = foreignItem[fk.keys.foreign];
             })
         }
+*/
         //save item
         promises.push( (function (_entity, _eItem) {
             let savePromise = new Promise(function(resolve, reject){
                 let query = constructInsertQuery(_entity, _eItem);
-                if (argv.v) {
-                    console.log("SQL:", query["state"]);
-                    console.log("PARAMS:", query["params"]);
-                }
+                conOut("SQL:", query["state"]);
+                conOut("PARAMS:", query["params"]);
                 pgClient.query(query["state"], query["params"], function (err, result) {
                     if (err) {
                         reject(err);
@@ -327,14 +336,15 @@ function saveItems(entity, pgClient) {
                 });
             });
             savePromise.then(function(key){
+                conOut("Entity " + _entity + " saved:", _eItem);
                 let oldKey = _eItem[entities[_entity].key];
+                conOut("Old key for entity :" + _entity, oldKey);
+                conOut("New key for entity :" + _entity, key);
                 if (oldKey !== null) {
+                    conOut("Going to fix foreign keys pointing to " + _entity + " with pk=", oldKey);
                     fixForeignKeys(_entity, oldKey, key);
                 }
                 _eItem[entities[_entity].key] = key;
-                if (argv.v) {
-                    console.log("Entity " + _entity + " saved:", _eItem);
-                }
             }, function(err){
                 console.error('error happened during query ', err);
             });
@@ -367,10 +377,8 @@ function constructInsertQuery(entity, item) {
 }
 
 function fakeQuery(state, params, callback) {
-    if (argv.v) {
-        console.log("sql state:", state);
-        console.log("sql params: ", params);
-    }
+    conOut("sql state:", state);
+    conOut("sql params: ", params);
     callback(false, { rows: [ ++genNumbersCurrent ] });
 }
 
@@ -391,16 +399,12 @@ function clearDatabase(chain, pgClient) {
     queries.forEach(function(query) {
         chain = chain.then(function(res){
             return new Promise(function (resolve, reject) {
-                if (argv.v) {
-                    console.log("chain query :", query);
-                }
+                conOut("chain query :", query);
                 pgClient.query(query, [], function (err, result) {
                     if (err) {
                         reject(err);
                     } else {
-                        if (argv.v) {
-                            console.log("sql state:", query);
-                        }
+                        conOut("sql state:", query);
                         resolve(true);
                     }
                 });
