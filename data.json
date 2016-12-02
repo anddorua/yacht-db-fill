@@ -14,44 +14,44 @@
         "discount": null
       },
       {
-        "id": 1233,
-        "firstname": "Benton",
-        "lastname": "Brekke",
-        "email": "Susana_Walker36@gmail.com",
-        "mobile": "062-762-4519",
+        "id": 1240,
+        "firstname": "Tomas",
+        "lastname": "Moore",
+        "email": "Misty33@gmail.com",
+        "mobile": "323-471-0731 x02",
+        "password": "password",
+        "role": "user_role",
+        "discount": 0.09
+      },
+      {
+        "id": 1225,
+        "firstname": "Dion",
+        "lastname": "O'Kon",
+        "email": "Macy_Labadie@gmail.com",
+        "mobile": "(948) 704-8288 x",
         "password": "password",
         "role": "user_role",
         "discount": null
       },
       {
-        "id": 1153,
-        "firstname": "London",
-        "lastname": "Denesik",
-        "email": "Adolph.Wolf@gmail.com",
-        "mobile": "686-710-1591 x59",
+        "id": 1607,
+        "firstname": "Winfield",
+        "lastname": "Batz",
+        "email": "Walton.Cummings@yahoo.com",
+        "mobile": "1-508-874-5425 x",
         "password": "password",
         "role": "user_role",
-        "discount": 0.06
+        "discount": null
       },
       {
-        "id": 1621,
-        "firstname": "Shaun",
-        "lastname": "Abernathy",
-        "email": "Ofelia76@yahoo.com",
-        "mobile": "1-214-712-9397",
+        "id": 1199,
+        "firstname": "Uriel",
+        "lastname": "Witting",
+        "email": "Stella_Klocko@yahoo.com",
+        "mobile": "1-951-422-7062",
         "password": "password",
         "role": "user_role",
-        "discount": 0.07
-      },
-      {
-        "id": 1455,
-        "firstname": "Noelia",
-        "lastname": "Walsh",
-        "email": "Ressie_Friesen98@gmail.com",
-        "mobile": "(208) 555-8086 x",
-        "password": "password",
-        "role": "user_role",
-        "discount": 0.01
+        "discount": 0.09
       }
     ]
   },
@@ -70,63 +70,63 @@
     "items": [
       {
         "id": null,
-        "user_id": 1455,
-        "platform": "Mozilla/5.0 (Windows NT 5.3; rv:11.7) Gecko/2",
-        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 6.2) Appl"
+        "user_id": 1240,
+        "platform": "Mozilla/5.0 (compatible; MSIE 10.0; Windows N",
+        "device_id": "Mozilla/5.0 (Windows NT 5.2; Win64; x64; rv:1"
       },
       {
         "id": null,
-        "user_id": 1455,
-        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.0) Appl",
-        "device_id": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT"
-      },
-      {
-        "id": null,
-        "user_id": 1455,
-        "platform": "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT",
-        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.2) Appl"
-      },
-      {
-        "id": null,
-        "user_id": 1621,
-        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.3) Appl",
-        "device_id": "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:10.5) "
-      },
-      {
-        "id": null,
-        "user_id": 1455,
-        "platform": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_1",
-        "device_id": "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_"
-      },
-      {
-        "id": null,
-        "user_id": 1233,
-        "platform": "Mozilla/5.0 (Windows; U; Windows NT 5.2) Appl",
+        "user_id": 1607,
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 5.0) Appl",
         "device_id": "Mozilla/5.0 (compatible; MSIE 7.0; Windows NT"
       },
       {
         "id": null,
-        "user_id": 1,
-        "platform": "Mozilla/5.0 (Windows; U; Windows NT 5.2) Appl",
-        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.3) Appl"
-      },
-      {
-        "id": null,
-        "user_id": 1621,
-        "platform": "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:",
-        "device_id": "Mozilla/5.0 (Windows NT 5.0; Win64; x64; rv:8"
+        "user_id": 1240,
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.0) Appl",
+        "device_id": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:9.6) G"
       },
       {
         "id": null,
         "user_id": 1,
-        "platform": "Mozilla/5.0 (Windows; U; Windows NT 5.1) Appl",
-        "device_id": "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10."
+        "platform": "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.0) Appl"
       },
       {
         "id": null,
-        "user_id": 1455,
-        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.3) Appl",
-        "device_id": "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_"
+        "user_id": 1199,
+        "platform": "Mozilla/5.0 (Windows NT 6.2; Trident/7.0; Tou",
+        "device_id": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7.3"
+      },
+      {
+        "id": null,
+        "user_id": 1225,
+        "platform": "Mozilla/5.0 (Windows; U; Windows NT 6.0) Appl",
+        "device_id": "Mozilla/5.0 (Windows; U; Windows NT 5.2) Appl"
+      },
+      {
+        "id": null,
+        "user_id": 1,
+        "platform": "Mozilla/5.0 (Windows NT 5.3; rv:7.8) Gecko/20",
+        "device_id": "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:1"
+      },
+      {
+        "id": null,
+        "user_id": 1607,
+        "platform": "Mozilla/5.0 (compatible; MSIE 10.0; Windows N",
+        "device_id": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2"
+      },
+      {
+        "id": null,
+        "user_id": 1240,
+        "platform": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT",
+        "device_id": "Mozilla/5.0 (Windows NT 6.0; rv:14.6) Gecko/2"
+      },
+      {
+        "id": null,
+        "user_id": 1607,
+        "platform": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3",
+        "device_id": "Mozilla/5.0 (compatible; MSIE 10.0; Windows N"
       }
     ]
   },
@@ -232,43 +232,7 @@
         "id": null,
         "type": "description",
         "url": "http://lorempixel.com/640/480/transport",
-        "y_id": 5
-      },
-      {
-        "id": null,
-        "type": "description",
-        "url": "http://lorempixel.com/640/480/transport",
-        "y_id": 1
-      },
-      {
-        "id": null,
-        "type": "description",
-        "url": "http://lorempixel.com/640/480/transport",
-        "y_id": 5
-      },
-      {
-        "id": null,
-        "type": "image",
-        "url": "http://lorempixel.com/640/480/transport",
-        "y_id": 4
-      },
-      {
-        "id": null,
-        "type": "description",
-        "url": "http://lorempixel.com/640/480/transport",
-        "y_id": 3
-      },
-      {
-        "id": null,
-        "type": "drawing",
-        "url": "http://lorempixel.com/640/480/transport",
         "y_id": 2
-      },
-      {
-        "id": null,
-        "type": "drawing",
-        "url": "http://lorempixel.com/640/480/transport",
-        "y_id": 1
       },
       {
         "id": null,
@@ -280,13 +244,49 @@
         "id": null,
         "type": "drawing",
         "url": "http://lorempixel.com/640/480/transport",
+        "y_id": 5
+      },
+      {
+        "id": null,
+        "type": "image",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": 1
+      },
+      {
+        "id": null,
+        "type": "image",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": 3
+      },
+      {
+        "id": null,
+        "type": "description",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": 1
+      },
+      {
+        "id": null,
+        "type": "image",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": 5
+      },
+      {
+        "id": null,
+        "type": "drawing",
+        "url": "http://lorempixel.com/640/480/transport",
         "y_id": 4
       },
       {
         "id": null,
         "type": "drawing",
         "url": "http://lorempixel.com/640/480/transport",
-        "y_id": 2
+        "y_id": 1
+      },
+      {
+        "id": null,
+        "type": "description",
+        "url": "http://lorempixel.com/640/480/transport",
+        "y_id": 4
       }
     ]
   },
@@ -440,7 +440,7 @@
         "title": "Jet Boat",
         "unit": "Per Trip / Hour",
         "price": 500,
-        "terms": "Upto 7 People",
+        "description": "Upto 7 People",
         "status": true,
         "min_charge": 1
       },
@@ -449,7 +449,7 @@
         "title": "Bar Man",
         "unit": "Per hour",
         "price": 150,
-        "terms": "Professional Barman",
+        "description": "Professional Barman",
         "status": true,
         "min_charge": 4
       },
@@ -458,7 +458,7 @@
         "title": "Waiters / Staff",
         "unit": "Per hour",
         "price": 75,
-        "terms": "Professional Waiters",
+        "description": "Professional Waiters",
         "status": true,
         "min_charge": 4
       },
@@ -467,7 +467,7 @@
         "title": "Security/Bouncers",
         "unit": "Per hour",
         "price": 100,
-        "terms": "VIP Background Security",
+        "description": "VIP Background Security",
         "status": true,
         "min_charge": 4
       },
@@ -476,7 +476,7 @@
         "title": "Hostess",
         "unit": "Per hour",
         "price": 150,
-        "terms": "Presentable & Professional",
+        "description": "Presentable & Professional",
         "status": true,
         "min_charge": 4
       },
@@ -485,7 +485,7 @@
         "title": "Photographer",
         "unit": "Per hour",
         "price": 500,
-        "terms": "Standard Photographer",
+        "description": "Standard Photographer",
         "status": true,
         "min_charge": 4
       },
@@ -494,7 +494,7 @@
         "title": "DJ",
         "unit": "Per hour",
         "price": 500,
-        "terms": "House DJs, Excludes equipment",
+        "description": "House DJs, Excludes equipment",
         "status": true,
         "min_charge": 4
       },
@@ -503,7 +503,7 @@
         "title": "Professional Music equipment",
         "unit": "Per event",
         "price": 100,
-        "terms": "CDJ(Pioneer R1), 4 Speaker+Sub, Mic",
+        "description": "CDJ(Pioneer R1), 4 Speaker+Sub, Mic",
         "status": true,
         "min_charge": 0
       },
@@ -512,7 +512,7 @@
         "title": "Theme/ Decorations",
         "unit": "Per event",
         "price": 0,
-        "terms": "As Per Actual + 25% Surcharge",
+        "description": "As Per Actual + 25% Surcharge",
         "status": true,
         "min_charge": 0
       }
