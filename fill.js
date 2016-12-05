@@ -92,11 +92,24 @@ pg.connect(conString, function (err, client, done) {
         })
             .then(function (res) {
                 done();
+                client.end(function (err) {
+                    if (err) throw err;
+                });
+                process.exit();
             }, function (err) {
                 done();
+                client.end(function (err) {
+                    if (err) throw err;
+                });
+                process.exit();
             });
     } else {
         console.log("Skip filling database");
+        done();
+        client.end(function (err) {
+            if (err) throw err;
+        });
+        process.exit();
     }
 });
 
