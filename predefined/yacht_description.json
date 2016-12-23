@@ -1,0 +1,367 @@
+[
+  {
+    "yacht_id": 5,
+    "category": "price",
+    "content": "Per Hour Rate - AED 1,250"
+  },
+  {
+    "yacht_id": 5,
+    "category": "price",
+    "content": "4 Hour Charter - AED 5,000"
+  },
+  {
+    "yacht_id": 5,
+    "category": "price",
+    "content": "8 Hour Charter - AED 7,500"
+  },
+  {
+    "yacht_id": 5,
+    "category": "price",
+    "content": "24 Hour Charter - AED 15,000"
+  },
+  {
+    "yacht_id": 5,
+    "category": "price",
+    "content": "Minimum 2 Hours"
+  },
+  {
+    "yacht_id": 5,
+    "category": "spec",
+    "content": "Built Year 2012 "
+  },
+  {
+    "yacht_id": 5,
+    "category": "spec",
+    "content": "Length 75 feet / 23 M"
+  },
+  {
+    "yacht_id": 5,
+    "category": "spec",
+    "content": "Capacity - 35 Guests"
+  },
+  {
+    "yacht_id": 5,
+    "category": "info",
+    "content": "3 Bedrooms"
+  },
+  {
+    "yacht_id": 5,
+    "category": "info",
+    "content": "Large Flybridge"
+  },
+  {
+    "yacht_id": 5,
+    "category": "info",
+    "content": "Audio / Video Equipment Onboard"
+  },
+  {
+    "yacht_id": 5,
+    "category": "info",
+    "content": "Barbecue"
+  },
+  {
+    "yacht_id": 4,
+    "category": "price",
+    "content": "Per Hour Rate - AED 2,000"
+  },
+  {
+    "yacht_id": 4,
+    "category": "price",
+    "content": "4 Hour Charter - AED 7,500"
+  },
+  {
+    "yacht_id": 4,
+    "category": "price",
+    "content": "8 Hour Charter - AED 11,250"
+  },
+  {
+    "yacht_id": 4,
+    "category": "price",
+    "content": "24 Hour Charter - AED 22,500"
+  },
+  {
+    "yacht_id": 4,
+    "category": "spec",
+    "content": "Built Year 2015"
+  },
+  {
+    "yacht_id": 4,
+    "category": "spec",
+    "content": "Length 90 feet / 28 M"
+  },
+  {
+    "yacht_id": 4,
+    "category": "spec",
+    "content": "Capacity - 65 Guests"
+  },
+  {
+    "yacht_id": 4,
+    "category": "info",
+    "content": "5 Luxurious Bedrooms"
+  },
+  {
+    "yacht_id": 4,
+    "category": "info",
+    "content": "4 Bathrooms"
+  },
+  {
+    "yacht_id": 4,
+    "category": "info",
+    "content": "Large Flybridge can seat 50 Guests comfortably"
+  },
+  {
+    "yacht_id": 4,
+    "category": "info",
+    "content": "Audio / Video Equipment Onboard"
+  },
+  {
+    "yacht_id": 4,
+    "category": "info",
+    "content": "Barbecue"
+  },
+  {
+    "yacht_id": 1,
+    "category": "price",
+    "content": "4 Hours - AED 40,000"
+  },
+  {
+    "yacht_id": 1,
+    "category": "price",
+    "content": "8 Hours - AED 60,000"
+  },
+  {
+    "yacht_id": 1,
+    "category": "price",
+    "content": "24 Hours - AED 120,000"
+  },
+  {
+    "yacht_id": 1,
+    "category": "price",
+    "content": "Extra Hourly Charge AED 10,000"
+  },
+  {
+    "yacht_id": 1,
+    "category": "spec",
+    "content": "Built Year - 2016"
+  },
+  {
+    "yacht_id": 1,
+    "category": "spec",
+    "content": "Length - 220 Ft / 67 m"
+  },
+  {
+    "yacht_id": 1,
+    "category": "spec",
+    "content": "4 decks 26,490 Sq Ft"
+  },
+  {
+    "yacht_id": 1,
+    "category": "spec",
+    "content": "Cabins 17,287 Sq Ft"
+  },
+  {
+    "yacht_id": 1,
+    "category": "spec",
+    "content": "Bedrooms 3,000 Sq Ft Salon"
+  },
+  {
+    "yacht_id": 1,
+    "category": "info",
+    "content": "40,000 Litre Pool"
+  },
+  {
+    "yacht_id": 1,
+    "category": "info",
+    "content": "6 Jacuzzi"
+  },
+  {
+    "yacht_id": 1,
+    "category": "info",
+    "content": "Multiple bars"
+  },
+  {
+    "yacht_id": 1,
+    "category": "info",
+    "content": "High End Audio Video & Lighting System"
+  },
+  {
+    "yacht_id": 1,
+    "category": "info",
+    "content": "70 Seat Cinema, 20+ TV"
+  },
+  {
+    "yacht_id": 1,
+    "category": "info",
+    "content": "4 x 150“ Screens"
+  },
+  {
+    "yacht_id": 1,
+    "category": "spec",
+    "content": "Capacity - 1000"
+  },
+  {
+    "yacht_id": 3,
+    "category": "spec",
+    "content": "Built Year - 2015"
+  },
+  {
+    "yacht_id": 3,
+    "category": "spec",
+    "content": "Length - 88 Ft / 24 m"
+  },
+  {
+    "yacht_id": 3,
+    "category": "spec",
+    "content": "Width – 15 Ft / 4.7 m"
+  },
+  {
+    "yacht_id": 3,
+    "category": "spec",
+    "content": "3 decks 2,100 Sq Ft"
+  },
+  {
+    "yacht_id": 3,
+    "category": "spec",
+    "content": "Cabins 807 Sq Ft"
+  },
+  {
+    "yacht_id": 3,
+    "category": "spec",
+    "content": "3 Guest Bedrooms"
+  },
+  {
+    "yacht_id": 3,
+    "category": "spec",
+    "content": "3 Bathrooms"
+  },
+  {
+    "yacht_id": 3,
+    "category": "info",
+    "content": "8,000 Litre Pool"
+  },
+  {
+    "yacht_id": 3,
+    "category": "info",
+    "content": "Twin Crew Bedroom & Bathroom"
+  },
+  {
+    "yacht_id": 3,
+    "category": "info",
+    "content": "High End Audio Video & Lighting System"
+  },
+  {
+    "yacht_id": 3,
+    "category": "info",
+    "content": "6 TVs"
+  },
+  {
+    "yacht_id": 3,
+    "category": "spec",
+    "content": "Capacity - 60"
+  },
+  {
+    "yacht_id": 3,
+    "category": "info",
+    "content": "Twin Crew Bedroom & Bathroom"
+  },
+  {
+    "yacht_id": 4,
+    "category": "price",
+    "content": "Minimum 2 Hours"
+  },
+  {
+    "yacht_id": 3,
+    "category": "price",
+    "content": "4 Hours - AED 7,500"
+  },
+  {
+    "yacht_id": 3,
+    "category": "price",
+    "content": "8 Hours - AED 11,250"
+  },
+  {
+    "yacht_id": 3,
+    "category": "price",
+    "content": "24 Hours - AED 22,500"
+  },
+  {
+    "yacht_id": 3,
+    "category": "price",
+    "content": "Extra Hourly Charge AED 2,000"
+  },
+  {
+    "yacht_id": 2,
+    "category": "price",
+    "content": "4 Hours - AED 20,000"
+  },
+  {
+    "yacht_id": 2,
+    "category": "price",
+    "content": "8 Hours - AED 30,000"
+  },
+  {
+    "yacht_id": 2,
+    "category": "price",
+    "content": "24 Hours - AED 60,000"
+  },
+  {
+    "yacht_id": 2,
+    "category": "price",
+    "content": "Extra Hourly Charge AED 5,000"
+  },
+  {
+    "yacht_id": 2,
+    "category": "spec",
+    "content": "Built Year - 2015"
+  },
+  {
+    "yacht_id": 2,
+    "category": "spec",
+    "content": "Length - 155 Ft / 47 m"
+  },
+  {
+    "yacht_id": 2,
+    "category": "spec",
+    "content": "Width – 28.5 Ft / 8.7 m"
+  },
+  {
+    "yacht_id": 2,
+    "category": "spec",
+    "content": "4 decks 11,836 Sq Ft"
+  },
+  {
+    "yacht_id": 2,
+    "category": "spec",
+    "content": "Cabins 8,600 Sq Ft"
+  },
+  {
+    "yacht_id": 2,
+    "category": "spec",
+    "content": "Capacity - 250"
+  },
+  {
+    "yacht_id": 2,
+    "category": "info",
+    "content": "17,000 Litre Pool"
+  },
+  {
+    "yacht_id": 2,
+    "category": "info",
+    "content": "Multiple bars"
+  },
+  {
+    "yacht_id": 2,
+    "category": "info",
+    "content": "High End Audio Video & Lighting System"
+  },
+  {
+    "yacht_id": 2,
+    "category": "info",
+    "content": "20+ TV, 2 x 150“ Screens"
+  },
+  {
+    "yacht_id": 2,
+    "category": "info",
+    "content": "10 Guest & 4 Crew  18 Bathrooms"
+  }
+]

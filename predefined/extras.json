@@ -1,6 +1,6 @@
 [
     {
-      "id": null,
+      "id": 1,
       "title":"Jet Boat",
       "unit":"Per Trip / Hour",
       "price":500,
@@ -9,7 +9,7 @@
       "min_charge":1
     },
     {
-      "id": null,
+      "id": 2,
       "title":"Bar Man",
       "unit":"Per hour",
       "price":150,
@@ -18,7 +18,7 @@
       "min_charge":4
     },
     {
-      "id": null,
+      "id": 3,
       "title":"Waiters / Staff",
       "unit":"Per hour",
       "price":75,
@@ -27,7 +27,7 @@
       "min_charge":4
     },
     {
-      "id": null,
+      "id": 4,
       "title":"Security/Bouncers",
       "unit":"Per hour",
       "price":100,
@@ -36,7 +36,7 @@
       "min_charge":4
     },
     {
-      "id": null,
+      "id": 5,
       "title":"Hostess",
       "unit":"Per hour",
       "price":150,
@@ -45,7 +45,7 @@
       "min_charge":4
     },
     {
-      "id": null,
+      "id": 6,
       "title":"Photographer",
       "unit":"Per hour",
       "price":500,
@@ -54,7 +54,7 @@
       "min_charge":4
     },
     {
-      "id": null,
+      "id": 7,
       "title":"DJ",
       "unit":"Per hour",
       "price":500,
@@ -63,7 +63,7 @@
       "min_charge":4
     },
     {
-      "id": null,
+      "id": 8,
       "title":"Professional Music equipment",
       "unit":"Per event",
       "price":100,
@@ -72,7 +72,7 @@
       "min_charge":0
     },
     {
-      "id": null,
+      "id": 9,
       "title":"Theme/ Decorations",
       "unit":"Per event",
       "price":0,

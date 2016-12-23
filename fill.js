@@ -6,6 +6,7 @@
 const faker = require("faker");
 const pg = require('pg');
 const fs = require('fs');
+const moment = require('moment');
 const argv = require('minimist')(process.argv);
 
 if (Object.keys(argv).length == 1) {
@@ -31,10 +32,16 @@ var entities = {
     "my_yacht.user": { "amount": 5, "generator": genUser, "key": "id" },
     "my_yacht.devices": { "amount": 10, "generator": genDevices, "key": "id", "foreign": [ { fTable: "my_yacht.user", keys: { my: "user_id", foreign: "id" } } ] },
     "my_yacht.yacht": { "amount": 1000, "generator": genYacht, "key": "id" },
+    "my_yacht.yacht_description": { "amount": 1000, "generator": genYachtDescription, "key": "id", "foreign": [ { fTable: "my_yacht.yacht", keys: { my: "yacht_id", foreign: "id" } } ] },
     /* "my_yacht.booking": { "amount": 10, "generator": genBooking, "key": "id", "foreign": [ { fTable: "my_yacht.user", keys: { my: "user_id", foreign: "id" } }, { fTable: "my_yacht.yacht", keys: { my: "y_id", foreign: "id" } } ]  }, */
     "my_yacht.file": { "amount": 10, "generator": genFile, "key": "id", "foreign": [ { fTable: "my_yacht.yacht", keys: { my: "y_id", foreign: "id" } } ]  },
     "my_yacht.packages": { "amount": 100, "generator": genPackages, "key": "id", "foreign": [ { fTable: "my_yacht.yacht", keys: { my: "y_id", foreign: "id" } } ]  },
-    "my_yacht.extras": { "amount": 100, "generator": genExtras, "key": "id"  }
+    "my_yacht.extras": { "amount": 100, "generator": genExtras, "key": "id"  } ,
+    "my_yacht.createbooking": { "amount": 10, "generator": genBooking, "key": "id", "saver": "bookingSender", "foreign": [
+        { fTable: "my_yacht.yacht", "fixer": "bookingYachtKeyFiller" },
+        { fTable: "my_yacht.packages", "fixer": "bookingPackagesKeyFiller" },
+        { fTable: "my_yacht.extras", "fixer": "bookingExtrasKeyFiller" }
+    ]   }
 };
 
 Date.prototype.addDays = function(days)
@@ -54,64 +61,68 @@ function conOut() {
     }
 }
 
-pg.connect(conString, function (err, client, done) {
-    if (err) {
-        return console.error('error fetching client from pool', err)
-    }
-    // load / generate data
-    if (argv.f) {
-        entities = require(argv.f)
-    } else {
-        generateEntities();
-    }
-    // save to file if required
-    if (argv.s) {
-        fs.writeFile(argv.s, JSON.stringify(entities), function(err){
-            if (err) {
-                console.error("Error to write file " + argv.s + ": ", err);
-            } else {
-                console.log("Data written to " + argv.s);
-            }
-        });
-    }
-    // save data to database
-    if (argv.d) {
-        if (argv.clear) {
-            conOut("Going to clear tables before fill.");
-            saveChain = clearDatabase(saveChain, client);
+// load / generate data
+if (argv.f) {
+    entities = require(argv.f)
+} else {
+    generateEntities();
+}
+if (argv.s) {
+    fs.writeFile(argv.s, JSON.stringify(entities), function(err){
+        if (err) {
+            console.error("Error to write file " + argv.s + ": ", err);
+            process.exit(1);
         } else {
-            if (argv.v) {
-                conOut("Database not cleared.");
-            }
+            console.log("Data written to " + argv.s);
         }
-        saveEntities(client, saveChain);
-        saveChain.then(function(res){
-            conOut("================ all saved =================");
-        }, function(err){
-            console.error("Error occured while database filling", err);
-        })
-            .then(function (res) {
-                done();
-                client.end(function (err) {
-                    if (err) throw err;
+    });
+}
+
+if (argv.d) {
+    pg.connect(conString, function (err, client, done) {
+        if (err) {
+            return console.error('error fetching client from pool', err)
+        }
+        // save to file if required
+        // save data to database
+        if (argv.d) {
+            if (argv.clear) {
+                conOut("Going to clear tables before fill.");
+                saveChain = clearDatabase(saveChain, client);
+            } else {
+                if (argv.v) {
+                    conOut("Database not cleared.");
+                }
+            }
+            saveEntities(client, saveChain);
+            saveChain.then(function(res){
+                conOut("================ all saved =================");
+            }, function(err){
+                console.error("Error occured while database filling", err);
+            })
+                .then(function (res) {
+                    done();
+                    client.end(function (err) {
+                        if (err) throw err;
+                    });
+                    process.exit();
+                }, function (err) {
+                    done();
+                    client.end(function (err) {
+                        if (err) throw err;
+                    });
+                    process.exit();
                 });
-                process.exit();
-            }, function (err) {
-                done();
-                client.end(function (err) {
-                    if (err) throw err;
-                });
-                process.exit();
+        } else {
+            console.log("Skip filling database");
+            done();
+            client.end(function (err) {
+                if (err) throw err;
             });
-    } else {
-        console.log("Skip filling database");
-        done();
-        client.end(function (err) {
-            if (err) throw err;
-        });
-        process.exit();
-    }
-});
+            process.exit();
+        }
+    });
+}
 
 console.log("All done.");
 //return 0;
@@ -122,17 +133,21 @@ function* genUser(amount) {
         yield src[i];
     }
     for (let i = 0; i < (amount - src.length); i++) {
-        yield {
-            id: faker.random.number({ min: 1000, max: 2000, precision: 1 }),
-            firstname: faker.name.firstName().substr(0, 80),
-            lastname: faker.name.lastName().substr(0, 80),
-            email: faker.internet.email().substr(0, 255),
-            mobile: faker.phone.phoneNumber().substr(0, 16),
-            password: "password",
-            role: faker.random.arrayElement(["user_role"]),
-            discount: faker.random.arrayElement([faker.random.number({ min: 0, max: 0.1, precision: 0.01 }), null])
-        };
+        yield createRandomUser();
     }
+}
+
+function createRandomUser() {
+    return {
+        id: faker.random.number({ min: 1000, max: 2000, precision: 1 }),
+        firstname: faker.name.firstName().substr(0, 80),
+        lastname: faker.name.lastName().substr(0, 80),
+        email: faker.internet.email().substr(0, 255),
+        mobile: faker.phone.phoneNumber().substr(0, 16),
+        password: "password",
+        role: faker.random.arrayElement(["user_role"]),
+        discount: faker.random.arrayElement([faker.random.number({ min: 0, max: 0.1, precision: 0.01 }), null])
+    };
 }
 
 function* genDevices(amount) {
@@ -149,6 +164,14 @@ function* genDevices(amount) {
 
 function* genYacht(amount) {
     var src = require('./predefined/yacht.json');
+    for (let i = 0; i < amount && i < src.length; i++) {
+        yield src[i];
+    }
+    return null;
+}
+
+function* genYachtDescription(amount) {
+    var src = require('./predefined/yacht_description.json');
     for (let i = 0; i < amount && i < src.length; i++) {
         yield src[i];
     }
@@ -172,23 +195,167 @@ function* genExtras(amount) {
 }
 
 function* genBooking(amount) {
+    let users = entities["my_yacht.user"]["items"];
+    let yachts = entities["my_yacht.yacht"]["items"];
+    let now = moment();
+    // making past orders
+    var current = now.minute(0).second(0).millisecond(0).subtract(1, 'months').clone();
     for (let i = 0; i < amount; i++) {
-        var now = new Date();
-        var startDate = new Date(now.getTime() - Math.floor(Math.random() * 100) *86400 * 1000);
-        var endDate = new Date(startDate.getTime() + Math.floor(Math.random() * 200) *86400 * 1000);
-        endDate.addDays( Math.floor(Math.random() * 200));
-        yield {
-            id: null,
-            y_id: null,
-            start_date: startDate,
-            end_date: endDate,
-            user_id:  null,
-            payment: faker.finance.amount(1000, 5000, 2), //faker.random.arrayElement([faker.finance.amount(1000, 5000, 2), null]),
-            status: faker.random.number({ min: 1, max: 5 }),
-            payment_type: faker.random.arrayElement(["card", "paypal"])
-        };
+        yield createBooking(current, yachts, users, amount);
+    }
+
+    now = moment();
+    current = now.minute(0).second(0).millisecond(0).subtract(2, 'days').clone();
+    for (let i = 0; i < amount; i++) {
+        yield createBooking(current, yachts, users, amount);
     }
 }
+
+function createBooking(current, yachts, users, amount) {
+    let yacht = faker.random.arrayElement(yachts);
+    let booking = genBookingMain(users, yachts, current);
+    let bookingStart = new moment(booking.start_date);
+    let bookingEnd = new moment(booking.end_date);
+    let bookingHours = (bookingEnd.unix() - bookingStart.unix()) / 3600;
+
+    booking.additionals = [];
+    booking.additionals.push(genCharterAdditional(yacht));
+
+    let packAmount = faker.random.number({ min: 0, max: 3 });
+    for (let j = 0; j < packAmount; j++) {
+        booking.additionals.push(genNonCharterAdditional(booking.guests));
+    }
+
+    let extraAmount = faker.random.number({ min: 0, max: 3 });
+    for (let j = 0; j < extraAmount; j++) {
+        booking.additionals.push(genExtra(bookingHours));
+    }
+    return booking;
+}
+
+function genExtra(hours) {
+    let extra = faker.random.arrayElement(entities["my_yacht.extras"]["items"]);
+    let additional = {};
+    additional.extrasId = extra.id;
+    additional.packageId = null;
+    var amount = 0;
+    switch(extra.unit) {
+        case "Per Trip / Hour":
+            amount = extra.min_charge;
+            break;
+        case "Per hour":
+            amount = hours;
+            break;
+        case "Per event":
+            amount = 1;
+            break;
+        default:
+            amount = 1;
+    }
+    additional.amount = amount;
+    additional.money = extra.price * amount;
+    return additional;
+}
+
+function genNonCharterAdditional(guests) {
+    let nonCharter = entities["my_yacht.packages"]["items"].filter(function(pack) { return pack.y_id === null; } );
+    //console.log(nonCharter);
+    let pack = faker.random.arrayElement(nonCharter);
+    let additional = {};
+    additional.extrasId = null;
+    additional.packageId = pack.id;
+    additional.amount = Math.max(pack.min_charge, guests);
+    additional.money = pack.price * additional.amount;
+    return additional;
+}
+
+function genCharterAdditional(yacht) {
+    // yacht package
+    let yRentPack = getBookingYachtPackage(yacht);
+    let additional = {};
+    additional.extrasId = null;
+    additional.packageId = yRentPack.id;
+    additional.amount = faker.random.number({ min: yRentPack.min_charge, max: 28 });
+    additional.money = yRentPack.price * additional.amount;
+    return additional;
+}
+
+function getBookingYachtPackage(yacht) {
+    let packId = entities["my_yacht.packages"]["items"].findIndex(function(p){ return p.y_id == yacht.id; });
+    if (packId == -1) {
+        console.error("Can`t find package for yacht ", yacht);
+        process.exit(1);
+    }
+    return entities["my_yacht.packages"]["items"][packId];
+}
+
+function genBookingMain(users, yachts, current) {
+    let user = faker.random.number({ min: 1, max: 2 }) > 1 ? faker.random.arrayElement(users) : createRandomUser();
+    let yacht = faker.random.arrayElement(yachts);
+    let booking = {};
+    booking.email = user.email;
+    current.add(faker.random.number({ min: 1, max: 24 }), 'h'); // seed start time
+    //booking.start_date = current.format('YYYY MM DD HH:mm:ssZZ');
+    booking.start_date = current.format();
+    booking.end_date = current.add(faker.random.number({ min: 4, max: 28 }), 'h').format();
+    booking.guests = faker.random.number({ min: 10, max: yacht.max_guests });
+    booking.firstname = user.firstname;
+    booking.lastname = user.lastname;
+    booking.payment_type = "Method 1";
+    booking.phone = user.mobile;
+    booking.user_id = null;
+    booking.y_id = yacht.id;
+    return booking;
+}
+
+var fixers = {};
+
+fixers.bookingYachtKeyFiller = function(item, oldKey, newKey) {
+    if (item.y_id == oldKey) {
+        item.y_id = newKey;
+    }
+};
+
+fixers.bookingPackagesKeyFiller = function (item, oldKey, newKey) {
+    item.additionals.forEach(function(additional){
+        if (additional.packageId == oldKey) {
+            additional.packageId = newKey;
+        }
+    });
+};
+
+fixers.bookingExtrasKeyFiller = function (item, oldKey, newKey) {
+    item.additionals.forEach(function(additional){
+        if (additional.extrasId == oldKey) {
+            additional.extrasId = newKey;
+        }
+    });
+};
+
+var savers = {};
+savers.bookingSender = function (pgClient, entityName, eItem, resolve, reject) {
+    conOut("fake save for " + entityName + " " + JSON.stringify(eItem));
+    pgClient.query("select * from my_yacht.createbooking($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)", [
+        eItem.email,
+        eItem.start_date,
+        eItem.end_date,
+        eItem.guests,
+        eItem.firstname,
+        eItem.lastname,
+        eItem.payment_type,
+        eItem.phone,
+        eItem.user_id,
+        eItem.y_id,
+        JSON.stringify(eItem.additionals)
+    ], function (err, result) {
+        if (err) {
+            reject(err);
+        } else {
+            resolve(result.rows);
+        }
+    });
+};
+
 
 function* genInvoice(amount) {
     for (let i = 0; i < amount; i++) {
@@ -279,10 +446,17 @@ function fixForeignKeys(entityName, oldFk, newFk) {
             if (Object.keys(item).indexOf(entityMeta.key) == -1) {
                 item[entityMeta.key] = null;
             }
-            if (item[fk.keys.my] === oldFk) {
-                conOut("Entity " + eName + " with pk=" + item[entityMeta.key] + " fk[" + fk.keys.my + "]=="
-                    + (item[fk.keys.my] === null ? 'null' : item[fk.keys.my]) + " => " + newFk);
-                item[fk.keys.my] = newFk;
+            if (fk.keys) {
+                // have explicit defined foreign keys
+                if (item[fk.keys.my] === oldFk) {
+                    conOut("Entity " + eName + " with pk=" + item[entityMeta.key] + " fk[" + fk.keys.my + "]=="
+                        + (item[fk.keys.my] === null ? 'null' : item[fk.keys.my]) + " => " + newFk);
+                    item[fk.keys.my] = newFk;
+                }
+            } else if (fk.fixer) {
+                fixers[fk.fixer](item, oldFk, newFk);
+            } else {
+                console.error("No rule for fixing foreign keys in meta " + eName + " for table " + fk.fTable);
             }
         });
     }
@@ -323,41 +497,38 @@ function saveItems(entity, pgClient) {
     var promises = [];
     //var itemsChain = Promise.resolve(true);
     entities[entity].items.forEach(function (eItem) {
-        //collect foreign keys
-
-/*
-        if (entities[entity].foreign) {
-            entities[entity].foreign.forEach(function (fk) {
-                let forCount = entities[fk.fTable].items.length;
-                let foreignItem = entities[fk.fTable].items[ Math.floor(Math.random() * forCount) ];
-                eItem[fk.keys.my] = foreignItem[fk.keys.foreign];
-            })
-        }
-*/
         //save item
-        promises.push( (function (_entity, _eItem) {
+        promises.push( (function (_entityName, _eItem) {
             let savePromise = new Promise(function(resolve, reject){
-                let query = constructInsertQuery(_entity, _eItem);
-                conOut("SQL:", query["state"]);
-                conOut("PARAMS:", query["params"]);
-                pgClient.query(query["state"], query["params"], function (err, result) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(result.rows[0][entities[_entity].key]);
-                    }
-                });
+                if (_entityName == "my_yacht.createbooking") {
+                    var a = true;
+                }
+                if (entities[_entityName].saver) {
+                    conOut("call saver for:" + JSON.stringify(_eItem));
+                    savers[entities[_entityName].saver](pgClient, _entityName, _eItem, resolve, reject);
+                } else {
+                    let query = constructInsertQuery(_entityName, _eItem);
+                    conOut("SQL:", query["state"]);
+                    conOut("PARAMS:", query["params"]);
+                    pgClient.query(query["state"], query["params"], function (err, result) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(result.rows[0][entities[_entityName].key]);
+                        }
+                    });
+                }
             });
             savePromise.then(function(key){
-                conOut("Entity " + _entity + " saved:", _eItem);
-                let oldKey = _eItem[entities[_entity].key];
-                conOut("Old key for entity :" + _entity, oldKey);
-                conOut("New key for entity :" + _entity, key);
+                conOut("Entity " + _entityName + " saved:", _eItem);
+                let oldKey = _eItem[entities[_entityName].key];
+                conOut("Old key for entity :" + _entityName, oldKey);
+                conOut("New key for entity :" + _entityName, key);
                 if (oldKey !== null) {
-                    conOut("Going to fix foreign keys pointing to " + _entity + " with pk=", oldKey);
-                    fixForeignKeys(_entity, oldKey, key);
+                    conOut("Going to fix foreign keys pointing to " + _entityName + " with pk=", oldKey);
+                    fixForeignKeys(_entityName, oldKey, key);
                 }
-                _eItem[entities[_entity].key] = key;
+                _eItem[entities[_entityName].key] = key;
             }, function(err){
                 console.error('error happened during query ', err);
             });
