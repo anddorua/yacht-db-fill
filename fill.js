@@ -377,10 +377,27 @@ function* genInvoice(amount) {
 
 function* genFile(amount) {
     let yIds = entities["my_yacht.yacht"].items.map(function(item){ return item.id; });
+    // 1 - generate predefined
+    var src = require('./predefined/yacht_images.json');
+    var keys = Object.keys(src);
+    for (let i = 0; i < keys.length; i++) {
+        let key = keys[i];
+        let imgSet = src[key];
+        for (let j = 0; j < imgSet.length; j++) {
+            let imgUrl = imgSet[j];
+            yield {
+                id: null,
+                type:  "image",
+                url: imgUrl,
+                y_id: Number(key)
+            };
+        }
+    }
+    // 2 - generate random content
     for (let i = 0; i < amount; i++) {
         yield {
             id: null,
-            type:  faker.random.arrayElement(["image", "drawing", "description"]),
+            type:  faker.random.arrayElement(["drawing", "description"]),
             url: faker.image.transport(),
             y_id: faker.random.arrayElement(yIds)
         };
